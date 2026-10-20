@@ -1,1 +1,35 @@
 
+[project]
+name = "python-project-doctor"
+version = "0.1.0"
+description = "A tool to inspect Python projects and help users configure software engineering tools."
+readme = "README.md"
+requires-python = ">=3.11"
+
+# Packages needed to run the application
+dependencies = [
+    "streamlit>=1.40",
+]
+
+# Packages needed for development and testing
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.9",
+]
+
+# Configuration for pytest
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+# Configuration for Ruff (linting)
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+# Build configuration
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
