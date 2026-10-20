@@ -1,6 +1,6 @@
 
 [project]
-name = "python-project-doctor"
+name = "PyPadawan"
 version = "0.1.0"
 description = "A tool to inspect Python projects and help users configure software engineering tools."
 readme = "README.md"
