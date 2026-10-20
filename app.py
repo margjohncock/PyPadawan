@@ -7,6 +7,10 @@ import streamlit as st
 
 from inspector import inspect_project
 
+from gitignore_generator import (
+    GITIGNORE_TEMPLATES,
+    generate_gitignore,
+)
 
 st.title("PyPadawan")
 st.write(
@@ -92,3 +96,40 @@ if uploaded is not None:
         if result["errors"]:
             st.subheader("Inspection warnings")
             st.write(result["errors"])
+
+st.divider()
+
+st.header("Generate a .gitignore")
+
+st.write(
+    "Choose which tools your project uses. "
+    "PyPadawan will generate a .gitignore file "
+    "containing the appropriate patterns."
+)
+
+selected_options = st.multiselect(
+    "Select tools and environments",
+    options=list(GITIGNORE_TEMPLATES.keys()),
+    default=[
+        "Python",
+        "Virtual environments",
+        "pytest",
+    ],
+)
+
+gitignore_content = generate_gitignore(selected_options)
+
+st.subheader("Preview")
+
+st.code(
+    gitignore_content or "# No options selected",
+    language="text",
+)
+
+st.download_button(
+    label="Download .gitignore",
+    data=gitignore_content,
+    file_name=".gitignore",
+    mime="text/plain",
+    disabled=not gitignore_content,
+)
