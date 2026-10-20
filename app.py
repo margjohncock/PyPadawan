@@ -68,7 +68,11 @@ if uploaded is not None:
                         import shutil
                         shutil.copyfileobj(source, destination)
 
-        result = inspect_project(root)
+        result = inspect_project(project_root)
+
+        st.write("DEBUG: Project root:", project_root)
+        st.write("DEBUG: All gitignore files:", result["gitignore_files"])
+        st.write("DEBUG: Root gitignore:", result["has_gitignore"])
 
         st.subheader("Project inspection results")
 
