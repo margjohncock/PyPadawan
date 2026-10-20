@@ -1,4 +1,3 @@
-
 import io
 import tempfile
 import zipfile
@@ -9,7 +8,7 @@ import streamlit as st
 from inspector import inspect_project
 
 
-st.title("Python Project Doctor")
+st.title("PyPadawan")
 st.write(
     "Upload a Python project to see its structure "
     "and existing software engineering configuration."
